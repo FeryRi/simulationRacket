@@ -1,0 +1,11 @@
+#lang racket
+;registro: (nombre-semaforo (luz1 (segs1) (#autos1) (#peatones1)) (luz2 (segs2) (#autos2) (#peatones2))...(luz5 (segs5)(#autos5)(#peatones5))     
+(define (BDcrucero '((sem1 (verde (20)(15)())(amarillo(3)()())(rojo(45)()(10))()())
+                     (sem2 (verde (20)(15)())(amarillo(3)()())(rojo(45)()(10))()())
+                     (sem3 (rojo (20)()(15))(verde(45)(20)())(amarillo(3)()())()())
+                     (sem4 (rojo (20)()(15))(verde(45)(20)())(amarillo(3)()())()())
+                     (sem3 (rojo (50)()(35))(verde(15)(10)())(amarillo(3)()())()())
+                     (sem3 (rojo (20)()(15))(verde(45)(20)())(felcha (10)(8)())(amarillo(3)()())())
+                     (sem5 (verde (15)(9)())(amarillo(3)()())(rojo(45)()(10))()())
+                     (sem6 (peatonal (40)()(15))(rojo(25)(20)())()()())))
+                     

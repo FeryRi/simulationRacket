@@ -1,0 +1,40 @@
+#lang racket
+
+
+(define arch(open-input-file "reporte2.txt")) ;abre el archivo creado previamente
+(define tmp-autos (read arch)) ;lee la primera lista y la asocia con x
+(close-input-port arch) ;cierra el archivo
+
+
+(define (sem-clasico lst)
+  (cond ((null? lst)'())
+        (else (cons (calcula-tmpo (car lst))
+                    (sem-clasico (cdr lst))))))
+
+(define (calcula-tmpo tmp)
+  (cond
+    ((= tmp 0)15)
+    ((and(< tmp 16)(> tmp 0))(- 15 tmp))
+    ((and(> tmp 15)(< tmp 39))0)
+    (else(calcula-tmpo (- tmp 39)))))
+
+
+(define(suma lst)
+  (if (null? lst)
+      0
+      (+(car lst)(suma (cdr lst)))))
+
+(define(average lst)
+  (if (null? lst)
+      0
+  (/(suma lst)(length lst))))
+
+
+(define(cruce lst)
+  (cond((null? lst)'())
+       (else(append(list(sem-clasico(car lst)))(cruce (cdr lst))))))
+
+(define arch2(open-output-file "reporte2Salida.txt" #:exists 'replace)) ;sobrescribe en un txt si este ya existe 
+;(write (map sem-clasico tmp-autos) arch2)
+(write(cruce tmp-autos) arch2)
+(close-output-port arch2) ;cierra el archivo
